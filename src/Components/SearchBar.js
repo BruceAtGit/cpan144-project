@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Container, Form} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import Toggle from './toggle';
+import './toggle.css';
 
 function SearchBar() {
     const [keywords, setKeywords] = useState("");
@@ -26,6 +28,7 @@ function SearchBar() {
                     <button className="btn btn-outline-primary" variant="outline-primary">Search</button>
                 </LinkContainer>
             </Form>
+<toggle/>
         </Container>
     );
 }
