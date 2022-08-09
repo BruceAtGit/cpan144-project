@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import News from './NewsInfo';
 
@@ -7,20 +6,16 @@ function FetchNews(props) {
     const [news, setNews] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-
-    let {newsCategory} = useParams();
-
     const options = {
         method: 'GET',
         url: 'https://bing-news-search1.p.rapidapi.com/news',
-        params: {category:newsCategory, safeSearch: 'Off', textFormat: 'Raw'},
+        params: {category: props.newsCategory,safeSearch: 'Off', count: '12', headlineCount: '5',textFormat: 'Raw', originalImg: 'true'},
         headers: {
           'X-BingApis-SDK': 'true',
-          'X-RapidAPI-Key': '9da41f44bcmshf68bf6e7e12e85fp1a1880jsn6693a732a5f7',
+          'X-RapidAPI-Key': '16b18d25c4msh56163c1c254872ap10e61fjsn8e67f8ab03a8',
           'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
         }
       };
-  
       useEffect(() => {
           axios.request(options)
               .then((json) => {
@@ -30,11 +25,11 @@ function FetchNews(props) {
               }
               )
               .catch(error => console.log(error))
-      }, [options]);
+      }, [props.newsCategory]);
 
     if (!isLoading) {
         return (
-        <div className="loading">Loading...
+        <div className="loading">Content is Loading...
         </div>
         );
     } else {
@@ -47,6 +42,7 @@ function FetchNews(props) {
                         description={results.description}
                         title={results.name}
                         url={results.url}
+                        date={results.datePublished}
                     />)
                 }
             </div>
