@@ -13,6 +13,7 @@ export default function About(props) {
         <li>Chi Lam Yim</li>
         <li>Ka Yan Lui</li>
         <li>Ming Lok Pun</li>
+<li>test</li>
       </ul>
       </div>
     );
