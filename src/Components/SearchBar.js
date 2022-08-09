@@ -23,7 +23,7 @@ function SearchBar() {
                     onChange={(e) => setKeywords(e.target.value)}
                 />
                 <LinkContainer to={"/Search/" + keywords}>
-                    <button className="btn btn-outline-primary" variant="outline-primary">Searchi</button>
+                    <button className="btn btn-outline-primary" variant="outline-primary">Search</button>
                 </LinkContainer>
             </Form>
         </Container>
